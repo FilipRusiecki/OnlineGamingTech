@@ -1,3 +1,3 @@
 # All Labs
-# Lab 1 : IP ADDRESSES
-# Lab 2 :
+# Lab 1 : Ip Addressed 
+# Lab 2 : Binomial distribution
