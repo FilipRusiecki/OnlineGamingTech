@@ -1,0 +1,65 @@
+	Alice and Bob wish to communicate with each other over the Internet. Each uses RSA, the common asymmetric cryptography protocol. 
+	Thus, each has his/her own private key and knows the public key of the other. Let us denote private key of Alice as Pr(A), 
+	private key of Bob as Pr(B), public key of Alice as Pu(A), and public key of Bob as Pu(B). 
+
+Please use the following notation in presenting your answers:
+E_K (M): Message M is encrypted using key K
+D_K (M): Message M is decrypted using key K
+
+
+	========================================================================================================	
+	Alice wants to send a message to Bob so that no one else can read it. Let us denote the message as M_1. 
+	How would Alice send the message? 
+	
+	Answer: 
+	1. the public key (Pu(B)) of Bob.
+	2. Use the encryption notation E_Pu(B)(M_1) to encrypt the message (M_1) using Bob's public key (Pu(B)).
+	3. Send Bob over the Internet the encrypted message (E_Pu(B)(M_1)).
+	4. The encrypted message (E_Pu(B)(M_1)) is delivered to Bob.
+	5. With the decryption notation D_Pr(B)(E_Pu(B)(M_1), Bob decrypts the message with his private key (Pr(B)).
+    6. Bob gets the decrypted version's original plaintext message (M_1) from it.
+	========================================================================================================
+	
+	
+	
+	========================================================================================================
+	Let us denote the message Alice sent as M_1 How would Bob decipher the message?
+	
+	Answer: Therefore, to decipher the message (M_1, Bob performs the decryption operation using his private 
+	key (Pr(B)) on the received encrypted message (E_Pu(B)(M_1).
+	This allows him to recover the original plaintext message sent by Alice.
+	========================================================================================================
+	
+	
+	
+	========================================================================================================
+	In this situation, Alice does not care if anyone can read her message. But she does care that no one in 
+	the middlecan change the message (in an undetectable manner). Let us denote the message as M_2.
+	
+	Answer: Alice can employ a digital signature technique to make sure that no one in the middle can change 
+	the message (in an undetectable way) while she is communicating with Bob. In this scenario, Alice would
+	sign the message M_2 with her private key (Pr(A)), and Bob would use her public key (Pu(A)) to confirm 
+	the signature.
+	
+	The process would be as follows:
+	1. Using her private key (Pr(A)), Alice signs the message M_2 as follows: Sign_A = D_Pr(A)(M_2).
+	2. Alice sends both the message M_2 and the signature Sign_A to Bob.
+	3. Bob receives the message M_2 and the signature Sign_A.
+	4. Bob verifies the signature using Alice's public key (Pu(A)):Verify_A = E_Pu(A)(Sign_A)
+	5. If Verify_A matches the calculated signature from Step 4 and the verification is successful, Bob can 
+	   be sure that the message M_2 came from Alice and was not tampered with in route.
+	========================================================================================================
+	
+	
+	
+	========================================================================================================
+	What would Bob do to verify that the message indeed came from Alice?		
+	Answer: 
+	1. Alice sends Bob the message M_2 along with the signature Sign_A.
+	2. By encrypting Sign_A, Bob uses Alice's public key (Pu(A)) to validate the signature.
+		Sign_A = E_Pu(A)(Verify_A)
+	3. Bob contrasts the received signature Sign_A with the calculated verification value Verify_A.
+		Bob is able to authenticate that Alice sent the message M_2 if Verify_A and Sign_A are in agreement.
+		Verify_A must match Sign_A for the signature to be genuine; otherwise, it may have been tampered with 
+		or came from an unapproved source.
+	========================================================================================================
